@@ -1,0 +1,21 @@
+@font-face {
+  font-family: "ProximaNovaSemiBold";
+  src: url("https://rally1.rallydev.com/assets/burro/caac-fonts/0.0.18/dist/fonts/proximanova-semibold/proximanova-semibold.woff2")
+    format("woff2");
+}
+
+/* svg {
+  display: block;
+  margin-top: 10px;
+} */
+
+.estimator {
+  fill: #d2e5eb;
+  stroke: #50b2ef;
+}
+
+.main {
+  fill: url(#diagonalHatch);
+  /* stroke: #50b2ef; */
+  stroke: "none";
+}

@@ -1,0 +1,14 @@
+@font-face {
+  font-family: "ProximaNovaSemiBold";
+  src: url("https://rally1.rallydev.com/assets/burro/caac-fonts/0.0.18/dist/fonts/proximanova-semibold/proximanova-semibold.woff2")
+    format("woff2");
+}
+
+.mainRect {
+  fill: url(#diagonalHatch);
+}
+
+.artifactName {
+  font-size: 16px;
+  font-family: "ProximaNovaSemiBold";
+}
