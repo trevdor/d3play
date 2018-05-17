@@ -1,30 +1,30 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-import "./CustomDataPoint.css";
+import './CustomDataPoint.css';
 
 const genFeatureId = () => `F${Math.round(1000 + Math.random() * 9000)}`;
 const randColor = () =>
-  "#" + (100000 + Math.floor(Math.random() * 16777215)).toString(16);
+  '#' + (100000 + Math.floor(Math.random() * 16777215)).toString(16);
 
 export default class CustomDataPoint extends Component {
   static propTypes = {
     color: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     planEst: PropTypes.number.isRequired,
-    refinedEst: PropTypes.number.isRequired
+    refinedEst: PropTypes.number.isRequired,
   };
 
-  state = {
-    color: randColor()
-  };
+  artifactSize = 80 + Math.random() * 320;
+  color = randColor();
+  featureId = genFeatureId();
 
   render() {
     return (
       <g>
         <defs>
           <pattern
-            id="diagonalHatch"
+            id={`diagonalHatch${this.color.substring(1)}`}
             width="10"
             height="10"
             patternTransform="rotate(45 0 0)"
@@ -37,8 +37,8 @@ export default class CustomDataPoint extends Component {
               x2="0"
               y2="10"
               style={{
-                stroke: this.state.color,
-                strokeWidth: 1
+                stroke: this.color,
+                strokeWidth: 1,
               }}
             />
           </pattern>
@@ -48,13 +48,14 @@ export default class CustomDataPoint extends Component {
           className="mainRect"
           x={this.props.x}
           y={this.props.y}
-          width={80 + Math.random() * 300}
+          width={this.artifactSize}
           height="30"
+          fill={`url(#diagonalHatch${this.color.substring(1)})`}
         />
         <rect
           className="color"
-          fill={this.state.color}
-          stroke={this.state.color}
+          fill={this.color}
+          stroke={this.color}
           x={this.props.x}
           y={this.props.y}
           width="8"
@@ -64,9 +65,9 @@ export default class CustomDataPoint extends Component {
           className="artifactName"
           x={this.props.x + 16}
           y={this.props.y + 20}
-          fill={this.state.color}
+          fill={this.color}
         >
-          {genFeatureId()}
+          {this.featureId}
         </text>
       </g>
     );
