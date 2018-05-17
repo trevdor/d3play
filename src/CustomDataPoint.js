@@ -1,22 +1,23 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
-import './CustomDataPoint.css';
+import "./CustomDataPoint.css";
 
 const genFeatureId = () => `F${Math.round(1000 + Math.random() * 9000)}`;
 const randColor = () =>
-  '#' + (100000 + Math.floor(Math.random() * 16777215)).toString(16);
+  "#" + (100000 + Math.floor(Math.random() * 16777215)).toString(16);
 
 export default class CustomDataPoint extends Component {
   static propTypes = {
     color: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     planEst: PropTypes.number.isRequired,
-    refinedEst: PropTypes.number.isRequired,
+    refinedEst: PropTypes.number.isRequired
   };
 
   artifactSize = 80 + Math.random() * 320;
   color = randColor();
+  mainFill = `url(#diagonalHatch${this.color.substring(1)})`;
   featureId = genFeatureId();
 
   render() {
@@ -38,7 +39,7 @@ export default class CustomDataPoint extends Component {
               y2="10"
               style={{
                 stroke: this.color,
-                strokeWidth: 1,
+                strokeWidth: 1
               }}
             />
           </pattern>
@@ -50,7 +51,7 @@ export default class CustomDataPoint extends Component {
           y={this.props.y}
           width={this.artifactSize}
           height="30"
-          fill={`url(#diagonalHatch${this.color.substring(1)})`}
+          fill={this.mainFill}
         />
         <rect
           className="color"

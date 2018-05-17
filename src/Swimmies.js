@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   VictoryArea,
   VictoryAxis,
@@ -13,10 +13,10 @@ import {
   VictoryStack,
   VictoryTheme,
   VictoryTooltip,
-  VictoryZoomContainer,
-} from 'victory';
-import CustomDataPoint from './CustomDataPoint';
-import CustomLabel from './CustomLabel';
+  VictoryZoomContainer
+} from "victory";
+import CustomDataPoint from "./CustomDataPoint";
+import CustomLabel from "./CustomLabel";
 
 const getRandNum = (lower, upper) =>
   (0 || lower) + Math.floor(Math.random() * (upper || 4));
@@ -36,13 +36,13 @@ export default class Swimmies extends React.Component {
     this.state = {
       zoomDomain: {
         x: [new Date(2017, 10, 1), new Date(2018, 6, 1)],
-        y: [-250, 0],
-      },
+        y: [-250, 0]
+      }
     };
   }
 
   handleZoom(domain) {
-    this.setState({ zoomDomain: domain });
+    this.setState({ zoomDomain: { x: domain.x } });
   }
 
   render() {
@@ -103,14 +103,14 @@ export default class Swimmies extends React.Component {
             />
           }
           height={600}
-          scale={{ x: 'time', y: 'linear' }}
+          scale={{ x: "time", y: "linear" }}
           width={800}
         >
           <VictoryAxis fixLabelOverlap />
           <VictoryLine
             data={[
-              { x: new Date(2017, 10, 1), y: -100 },
-              { x: new Date(2018, 6, 1), y: -100 },
+              { x: new Date(2012, 10, 1), y: -100 },
+              { x: new Date(2020, 6, 1), y: -100 }
             ]}
           />
           <VictoryScatter
@@ -118,33 +118,39 @@ export default class Swimmies extends React.Component {
               { x: new Date(2017, 12, 25), y: -40 },
               { x: new Date(2018, 1, 15), y: -20 },
               { x: new Date(2017, 10, 16), y: -105 },
-              { x: new Date(2018, 2, 14), y: -80 },
-              { x: new Date(2017, 5, 5), y: -80 },
+              { x: new Date(2018, 2, 14), y: -60 },
+              { x: new Date(2018, 5, 5), y: -80 }
             ]}
             dataComponent={<CustomDataPoint />}
           />
           <VictoryScatter
             data={[
-              { x: new Date(2017, 12, 25), y: -140 },
-              { x: new Date(2018, 1, 15), y: -120 },
-              { x: new Date(2017, 10, 16), y: -205 },
+              { x: new Date(2017, 11, 6), y: -140 },
+              { x: new Date(2018, 1, 12), y: -120 },
               { x: new Date(2018, 2, 14), y: -180 },
-              { x: new Date(2017, 5, 5), y: -180 },
+              { x: new Date(2018, 4, 7), y: -160 }
             ]}
             dataComponent={<CustomDataPoint />}
           />
           <VictoryLine
             data={[
-              { x: new Date(2017, 10, 1), y: -200 },
-              { x: new Date(2018, 6, 1), y: -200 },
+              { x: new Date(2012, 10, 1), y: -200 },
+              { x: new Date(2020, 6, 1), y: -200 }
             ]}
+          />
+          <VictoryScatter
+            data={[
+              { x: new Date(2017, 11, 14), y: -205 },
+              { x: new Date(2018, 3, 2), y: -225 }
+            ]}
+            dataComponent={<CustomDataPoint />}
           />
         </VictoryChart>
         <VictoryChart
           padding={{ top: 0, left: 50, right: 50, bottom: 30 }}
-          width={600}
+          width={800}
           height={100}
-          scale={{ x: 'time' }}
+          scale={{ x: "time" }}
           containerComponent={
             <VictoryBrushContainer
               brushDimension="x"
@@ -156,14 +162,12 @@ export default class Swimmies extends React.Component {
           <VictoryAxis />
           <VictoryLine
             style={{
-              data: { stroke: '#d6f1fc' },
+              data: { stroke: "#d6f1fc" }
             }}
             data={[
-              { key: new Date(2017, 10, 1), b: 250 },
-              { key: new Date(2018, 6, 1), b: 250 },
+              { x: new Date(2017, 10, 1), y: 250 },
+              { x: new Date(2018, 6, 1), y: 250 }
             ]}
-            x="key"
-            y="b"
           />
         </VictoryChart>
       </div>
