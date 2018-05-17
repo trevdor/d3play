@@ -48,12 +48,29 @@ export default class Swimmies extends React.Component {
   render() {
     return (
       <div>
-        <VictoryChart
+        {/*<VictoryChart
+          float="left"
           paddingRight={50}
           width={200}
           height={600}
           scale={{ y: 'linear' }}
+          containerComponent={
+            <VictoryZoomContainer
+              allowZoom={false}
+              zoomDimension="y"
+              zoomDomain={this.state.zoomDomain}
+              onZoomDomainChange={this.handleZoom.bind(this)}
+            />
+          }
         >
+          <VictoryAxis
+            style={{
+              axis: { stroke: 'none' },
+              grid: { stroke: 'none' },
+              ticks: { stroke: 'none' },
+              tickLabels: { fill: 'none' },
+            }}
+          />
           <VictoryStack colorScale={['#d6f1fc', '#FFF', '#d6f1fc']}>
             <VictoryArea
               data={[
@@ -76,7 +93,7 @@ export default class Swimmies extends React.Component {
               y="b"
             />
           </VictoryStack>
-        </VictoryChart>
+            </VictoryChart>*/}
         <VictoryChart
           containerComponent={
             <VictoryZoomContainer
@@ -90,7 +107,6 @@ export default class Swimmies extends React.Component {
           width={800}
         >
           <VictoryAxis fixLabelOverlap />
-
           <VictoryLine
             data={[
               { x: new Date(2017, 10, 1), y: -100 },
@@ -101,7 +117,7 @@ export default class Swimmies extends React.Component {
             data={[
               { x: new Date(2017, 12, 25), y: -40 },
               { x: new Date(2018, 1, 15), y: -20 },
-              { x: new Date(2017, 10, 16), y: -100 },
+              { x: new Date(2017, 10, 16), y: -105 },
               { x: new Date(2018, 2, 14), y: -80 },
               { x: new Date(2017, 5, 5), y: -80 },
             ]}
@@ -111,7 +127,7 @@ export default class Swimmies extends React.Component {
             data={[
               { x: new Date(2017, 12, 25), y: -140 },
               { x: new Date(2018, 1, 15), y: -120 },
-              { x: new Date(2017, 10, 16), y: -200 },
+              { x: new Date(2017, 10, 16), y: -205 },
               { x: new Date(2018, 2, 14), y: -180 },
               { x: new Date(2017, 5, 5), y: -180 },
             ]}
